@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2021 at 11:12 PM
+-- Generation Time: Feb 10, 2021 at 07:17 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -237,7 +237,9 @@ INSERT INTO `student_additional_info` (`Student_ID`, `PreviousSchool`, `HighestQ
 (1, 'fd', 'spm', 'Email', NULL),
 (2, 'fd', 'spm', 'Email', NULL),
 (3, 'fd', 'spm', 'Email', NULL),
-(4, 'fd', 'spm', 'Email', NULL);
+(4, 'fd', 'spm', 'Email', NULL),
+(5, 'fd', 'spm', 'Email', NULL),
+(6, 'fd', 'spm', 'Email', NULL);
 
 -- --------------------------------------------------------
 
@@ -259,7 +261,9 @@ INSERT INTO `student_contact_info` (`Student_ID`, `Phone_Number`, `Email`) VALUE
 (1, '3213', 'abc@gmail.com'),
 (2, '3213', 'abc@gmail.com'),
 (3, '3213', 'abc@gmail.com'),
-(4, '3213', 'abc@gmail.com');
+(4, '3213', 'abc@gmail.com'),
+(5, '3213', 'abc@gmail.com'),
+(6, '3213', 'abc@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -281,7 +285,9 @@ INSERT INTO `student_personal_info` (`Student_ID`, `First_Name`, `Last_Name`) VA
 (1, 'abc', 'ffsd'),
 (2, 'abc', 'ffsd'),
 (3, 'abc', 'ffsd'),
-(4, 'abc', 'yi kai');
+(4, 'abc', 'yi kai'),
+(5, 'John ', 'Lee'),
+(6, 'abc', 'yi kai');
 
 --
 -- Indexes for dumped tables
@@ -345,7 +351,7 @@ ALTER TABLE `faq_scholarship`
 -- Indexes for table `queue`
 --
 ALTER TABLE `queue`
-  ADD PRIMARY KEY (`Student_ID`,`Queue_Num`);
+  ADD PRIMARY KEY (`Queue_Num`,`Student_ID`);
 
 --
 -- Indexes for table `student_additional_info`
