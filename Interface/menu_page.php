@@ -33,7 +33,7 @@
   <div class  = "welcome_word">
 
   Welcome <?php echo $Last_Name;?> <?php echo $First_Name; ?><br>
-  <img src="../Media/big_ben.jpg" alt="Nottingham Campus" class="big_ben">
+  <img src="../media/big_ben.jpg" alt="Nottingham Campus" class="big_ben">
   University of Nottingham Malaysia Booth <br><br>
 
   </div>
