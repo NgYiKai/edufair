@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2021 at 07:20 AM
+-- Generation Time: Mar 03, 2021 at 03:07 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.5
 
@@ -109,7 +109,7 @@ INSERT INTO `faq_facilities` (`no`, `alias`, `question`, `answer`) VALUES
 --
 
 CREATE TABLE `faq_fees` (
-  `number` int(11) NOT NULL,
+  `no` int(11) NOT NULL,
   `alias` varchar(300) NOT NULL,
   `question` varchar(300) NOT NULL,
   `answer` varchar(300) NOT NULL
@@ -119,7 +119,7 @@ CREATE TABLE `faq_fees` (
 -- Dumping data for table `faq_fees`
 --
 
-INSERT INTO `faq_fees` (`number`, `alias`, `question`, `answer`) VALUES
+INSERT INTO `faq_fees` (`no`, `alias`, `question`, `answer`) VALUES
 (1, 'tuition_fees_foundation_business', 'Tuition fees for Foundation in Business and Management', 'tbc');
 
 -- --------------------------------------------------------
@@ -171,7 +171,7 @@ INSERT INTO `faq_intake` (`no`, `alias`, `question`, `answer`) VALUES
 
 CREATE TABLE `faq_location` (
   `no` int(11) NOT NULL,
-  `var` varchar(300) NOT NULL,
+  `alias` varchar(300) NOT NULL,
   `question` varchar(300) NOT NULL,
   `answer` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -180,7 +180,7 @@ CREATE TABLE `faq_location` (
 -- Dumping data for table `faq_location`
 --
 
-INSERT INTO `faq_location` (`no`, `var`, `question`, `answer`) VALUES
+INSERT INTO `faq_location` (`no`, `alias`, `question`, `answer`) VALUES
 (1, 'location', 'Location of UNM', 'UNM is in Semenyih, Selangor');
 
 -- --------------------------------------------------------
@@ -321,7 +321,7 @@ ALTER TABLE `faq_facilities`
 -- Indexes for table `faq_fees`
 --
 ALTER TABLE `faq_fees`
-  ADD PRIMARY KEY (`number`);
+  ADD PRIMARY KEY (`no`);
 
 --
 -- Indexes for table `faq_general`
@@ -403,7 +403,7 @@ ALTER TABLE `faq_facilities`
 -- AUTO_INCREMENT for table `faq_fees`
 --
 ALTER TABLE `faq_fees`
-  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `faq_general`
