@@ -9,7 +9,7 @@
 <div class="container-table100">
     <div class="wrap-table100cit">
         <div class="table100">
-        <h6 style="font-size:30px;color:white;font-family:verdana"><b><center>Queue</center></b></h6>
+        <h6 style="font-size:30px;color:white;font-family:verdana"><b><center>Student Queue</center></b></h6>
         <br>
             <table>
                 <thead>
@@ -30,9 +30,7 @@
                             <?php 
                                 $dsql = "DELETE FROM queue where TIME_TO_SEC(TIMEDIFF(CURRENT_TIMESTAMP,queue.session))>'$TIMEOUT'";
                                 mysqli_query($link,$dsql);
-                                $query  = "SET @i:=0;";
-                                $query .= "UPDATE queue SET Queue_Num = @i:=(@i+1) WHERE 1=1;";
-                                $link->multi_query($query);?>
+                            ?>
                             <tr>
                                 <td class=column1>  <?php echo $row['Queue_Num'];        ?></td>
                                 <td>                <?php echo $row['First_Name'];      ?></td>
@@ -52,7 +50,7 @@
 
 <?php
     if (isset( $_GET['delete'])) {
-    $links = mysqli_connect("localhost", "abc123", "abc123", $Database_Name);
+    $links = mysqli_connect("localhost", "root", "", $Database_Name);
     // Check connection
     if($links === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());

@@ -14,6 +14,12 @@
             echo "record deleted";
         } 
     }
+
+    $check ="SELECT * FROM staff WHERE Serving = $Student_ID";
+    $flag=mysqli_query($link, $check);
+    if(mysqli_num_rows( $flag )>0) {
+    } else {}
+
     //AutoIncrement for queue number
     $query          =   $link->prepare("SELECT Queue_Num FROM queue ORDER BY Queue_Num DESC LIMIT 1"); // prepate a query
     $query          ->  execute(); // actually perform the query
@@ -31,6 +37,6 @@
     {   ++$ErrorCount;
         echo "ERROR: Could not able to execute $sql1. <br/>" . mysqli_error($link); }
     echo "Client View";
-    if($ErrorCount == 0)    { header('Location:../Interface/ClientQueue.php'); }
+    if($ErrorCount == 0)    { header('Location:../Interface/StudentQueue.php'); }
     exit;
 ?>

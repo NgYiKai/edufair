@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2021 at 07:20 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.5
+-- Generation Time: Mar 10, 2021 at 12:47 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -109,7 +109,7 @@ INSERT INTO `faq_facilities` (`no`, `alias`, `question`, `answer`) VALUES
 --
 
 CREATE TABLE `faq_fees` (
-  `number` int(11) NOT NULL,
+  `no` int(11) NOT NULL,
   `alias` varchar(300) NOT NULL,
   `question` varchar(300) NOT NULL,
   `answer` varchar(300) NOT NULL
@@ -119,7 +119,7 @@ CREATE TABLE `faq_fees` (
 -- Dumping data for table `faq_fees`
 --
 
-INSERT INTO `faq_fees` (`number`, `alias`, `question`, `answer`) VALUES
+INSERT INTO `faq_fees` (`no`, `alias`, `question`, `answer`) VALUES
 (1, 'tuition_fees_foundation_business', 'Tuition fees for Foundation in Business and Management', 'tbc');
 
 -- --------------------------------------------------------
@@ -171,7 +171,7 @@ INSERT INTO `faq_intake` (`no`, `alias`, `question`, `answer`) VALUES
 
 CREATE TABLE `faq_location` (
   `no` int(11) NOT NULL,
-  `var` varchar(300) NOT NULL,
+  `alias` varchar(300) NOT NULL,
   `question` varchar(300) NOT NULL,
   `answer` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -180,7 +180,7 @@ CREATE TABLE `faq_location` (
 -- Dumping data for table `faq_location`
 --
 
-INSERT INTO `faq_location` (`no`, `var`, `question`, `answer`) VALUES
+INSERT INTO `faq_location` (`no`, `alias`, `question`, `answer`) VALUES
 (1, 'location', 'Location of UNM', 'UNM is in Semenyih, Selangor');
 
 -- --------------------------------------------------------
@@ -213,7 +213,45 @@ CREATE TABLE `queue` (
   `Student_ID` int(5) NOT NULL,
   `Queue_Num` int(5) NOT NULL,
   `session` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `queue_staff`
+--
+
+CREATE TABLE `queue_staff` (
+  `Staff_ID` int(5) NOT NULL,
+  `Queue_Num` int(5) NOT NULL,
+  `session` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff`
+--
+
+CREATE TABLE `staff` (
+  `Staff_ID` int(5) NOT NULL,
+  `First_Name` varchar(255) DEFAULT NULL,
+  `Last_Name` varchar(255) DEFAULT NULL,
+  `Username` varchar(255) DEFAULT NULL,
+  `Password` varchar(255) DEFAULT NULL,
+  `Display_Name` varchar(255) DEFAULT NULL,
+  `Serving` int(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`Staff_ID`, `First_Name`, `Last_Name`, `Username`, `Password`, `Display_Name`, `Serving`) VALUES
+(1, 'One', 'Account', 'One', 'a1', 'Counter One', NULL),
+(2, 'Two', 'Account', 'Two', 'a1', 'Counter Two', NULL),
+(3, 'Three', 'Account', 'Three', 'a1', 'Counter Three', NULL),
+(4, 'Four', 'Account', 'Four', 'a1', 'Counter Four', NULL);
 
 -- --------------------------------------------------------
 
@@ -239,7 +277,11 @@ INSERT INTO `student_additional_info` (`Student_ID`, `PreviousSchool`, `HighestQ
 (3, 'fd', 'spm', 'Email', NULL),
 (4, 'fd', 'spm', 'Email', NULL),
 (5, 'fd', 'spm', 'Email', NULL),
-(6, 'fd', 'spm', 'Email', NULL);
+(6, 'fd', 'spm', 'Email', NULL),
+(7, 'Muah', 'A-Levels', 'Email', NULL),
+(8, 'hehe', 'asdf', 'Email', NULL),
+(9, 'Something2', 'Soemthing', 'Email', NULL),
+(10, 'adsf', 'Soemthing', 'Email', NULL);
 
 -- --------------------------------------------------------
 
@@ -263,7 +305,11 @@ INSERT INTO `student_contact_info` (`Student_ID`, `Phone_Number`, `Email`) VALUE
 (3, '3213', 'abc@gmail.com'),
 (4, '3213', 'abc@gmail.com'),
 (5, '3213', 'abc@gmail.com'),
-(6, '3213', 'abc@gmail.com');
+(6, '3213', 'abc@gmail.com'),
+(7, '0122285372', 'bengchuan900@outlook.com'),
+(8, '0122285372', 'bengchuan2000@hotmail.com'),
+(9, '0123456789', 'HAHA@gmail.com'),
+(10, '0123456789', 'HAHA@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -287,7 +333,22 @@ INSERT INTO `student_personal_info` (`Student_ID`, `First_Name`, `Last_Name`) VA
 (3, 'abc', 'ffsd'),
 (4, 'abc', 'yi kai'),
 (5, 'John ', 'Lee'),
-(6, 'abc', 'yi kai');
+(6, 'abc', 'yi kai'),
+(7, 'Chrome', 'One'),
+(8, 'Chrome', 'Two'),
+(9, 'Edge', 'One'),
+(10, 'Edge', 'Two');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_remark`
+--
+
+CREATE TABLE `student_remark` (
+  `Student_ID` int(5) NOT NULL,
+  `Remark` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -321,7 +382,7 @@ ALTER TABLE `faq_facilities`
 -- Indexes for table `faq_fees`
 --
 ALTER TABLE `faq_fees`
-  ADD PRIMARY KEY (`number`);
+  ADD PRIMARY KEY (`no`);
 
 --
 -- Indexes for table `faq_general`
@@ -354,6 +415,18 @@ ALTER TABLE `queue`
   ADD PRIMARY KEY (`Queue_Num`,`Student_ID`);
 
 --
+-- Indexes for table `queue_staff`
+--
+ALTER TABLE `queue_staff`
+  ADD PRIMARY KEY (`Queue_Num`,`Staff_ID`);
+
+--
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`Staff_ID`);
+
+--
 -- Indexes for table `student_additional_info`
 --
 ALTER TABLE `student_additional_info`
@@ -369,6 +442,12 @@ ALTER TABLE `student_contact_info`
 -- Indexes for table `student_personal_info`
 --
 ALTER TABLE `student_personal_info`
+  ADD PRIMARY KEY (`Student_ID`);
+
+--
+-- Indexes for table `student_remark`
+--
+ALTER TABLE `student_remark`
   ADD PRIMARY KEY (`Student_ID`);
 
 --
@@ -403,7 +482,7 @@ ALTER TABLE `faq_facilities`
 -- AUTO_INCREMENT for table `faq_fees`
 --
 ALTER TABLE `faq_fees`
-  MODIFY `number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `faq_general`

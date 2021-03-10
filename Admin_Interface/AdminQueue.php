@@ -12,50 +12,20 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
     $(document).ready(function(){
-        $("#div_refresh").load("ShowQueue.php");
+        $("#div_refresh_Student").load("ShowQueue.php");
+        $("#div_refresh_Staff").load("ShowStaffQueue.php");
+        $("#div_refresh_assign").load("AssignStudToStaff.php");
         setInterval(function() {
-            $("#div_refresh").load("ShowQueue.php");
-        }, 500);
+            $("#div_refresh_Student").load("ShowQueue.php");
+            $("#div_refresh_Staff").load("ShowStaffQueue.php");
+            $("#div_refresh_Assign").load("AssignStudToStaff.php");
+        }, 1000);
     });
 
 </script>
 <body>
-    <div class="container-Queue">
-        <div class="wrap-table100cat">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="column1">Current Student</th>
-                        <th class="column1">Next Student</th>
-                    </tr>
-                </thead>
-                <tr>
-                    <td>
-                        <div >
-                            <table>
-                                <tbody>
-                                    <tr><td class="column1">Student_ID</td>  <td>Place_Holder</td></tr>
-                                    <tr><td class="column1">First_Name</td>  <td>Place_Holder</td></tr>
-                                    <tr><td class="column1">Last_Name</td>  <td>Place_Holder</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </td>
-                    <td>
-                        <div >
-                            <table>
-                                <tbody>
-                                    <tr><td class="column1">Student_ID</td>  <td>Place_Holder</td></tr>
-                                    <tr><td class="column1">First_Name</td>  <td>Place_Holder</td></tr>
-                                    <tr><td class="column1">Last_Name</td>  <td>Place_Holder</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <div id="div_refresh"></div>
+    <div id="div_refresh_Student"></div>
+    <span id="div_refresh_Staff"></span>
+    <span id="div_refresh_Assign" style="display: none;"></span>
 </body>
 </html>
