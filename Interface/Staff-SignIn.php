@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../design/StaffStyle.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
-
+    sessionStorage.setItem("AutoAssign", "Disabled");
 </script>
 <body>
     <div class="container-Staff">

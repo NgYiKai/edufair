@@ -2,7 +2,16 @@
 
 
     include('../config/database_connect.php');
+
+    date_default_timezone_set("Asia/Kuala_Lumpur");
+    $CurrentTime=date("Y-m-d H:i:s");
+    $TIMEOUT=1;
     
+    $dsql = "DELETE FROM queue WHERE TIME_TO_SEC(TIMEDIFF(CURRENT_TIMESTAMP,queue.session))>'$TIMEOUT'";
+    mysqli_query($link,$dsql);
+    $dsql = "DELETE FROM queue_staff WHERE TIME_TO_SEC(TIMEDIFF(CURRENT_TIMESTAMP,queue_staff.session))>'$TIMEOUT'";
+    mysqli_query($link,$dsql);
+
     $reorder  = "SET @i:=0;";
     $reorder .= "UPDATE queue SET Queue_Num = @i:=(@i+1) WHERE 1=1;";
     $reorder .= "SET @i:=0;";

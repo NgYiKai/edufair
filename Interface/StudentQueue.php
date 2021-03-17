@@ -24,11 +24,17 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
   <script>
       var StudentID = <?php echo $_SESSION['Student_ID']?>;
+      var QueueNum=1;
       function DisplayQueueNumber() {
         $.post('ShowQueueNumber.php',{postStudID:StudentID},
         function(data){
-          $('#span_QueueNumUpdate').html(data);
-          // document.getElementById("span_QueueNumUpdate").innerHTML = data;
+          console.log();
+          if(isNaN(parseInt(data))){
+            $('#span_QueueNumUpdate').html(QueueNum);
+          } else {
+            QueueNum=data;
+            $('#span_QueueNumUpdate').html(data);
+          }
         });
       }
       function UpdateTimeStamp() {
@@ -59,13 +65,12 @@
       UpdateTimeStamp();
       DisplayQueueNumber();
           setInterval(function() {
-              console.log(lock);
               RetrieveStaffInfo();
-            if(assignStaffID == "NULL" && lock == 'FALSE') {
+            if(assignStaffID == "NULL" && lock == "FALSE") {
               UpdateTimeStamp();
               DisplayQueueNumber();
             } else {
-              lock = 'TRUE';
+              lock = "TRUE";
               document.getElementById("AssignMSG1").innerHTML =  "You have been assigned to " + Sta_LN + " " + Sta_FN + ".";
               document.getElementById("AssignMSG2").innerHTML =  "Please proceed to " + Sta_D_N + ".";
               document.getElementById("QueueNumberTitle").style.display = "none";
@@ -93,7 +98,7 @@
   
     <title>Queuing</title>
   
-    <div id="div_refresh"></div>
+    <div id="div_refresh" style="display: none;"></div>
     <div id="div_clearAssign" style="display: none;"></div>
 
   
@@ -112,7 +117,7 @@
     </div>
 
     <div id="QueueBox" class = "box">
-      <p id="span_QueueNumUpdate"></p>
+      <p class="queue_number" id="span_QueueNumUpdate"></p>
     </div>
 
     <div id = "QueueText" class = "container-fluid">

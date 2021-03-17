@@ -472,6 +472,12 @@ p.queue_text
     text-align: center;
   }
 
+p.queue_number
+{
+  line-height: 209px;
+  font-size: 100px;
+  text-align:center;
+}
 .box
   {
     margin: auto;

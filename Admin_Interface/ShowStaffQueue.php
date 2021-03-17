@@ -15,9 +15,9 @@
                 <thead>
                     <tr class="table100-head"> 
                         <th class="column1">Queue</th>
-                        <th>First_Name</th>
-                        <th>Last_Name</th>
-                        <th colspan="1">Action</th>
+                        <th class="column2">First_Name</th>
+                        <th class="column2">Last_Name</th>
+                        <th class="column3" colspan="1">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,15 +27,12 @@
                         $resultCheck = mysqli_num_rows($result);?>
 
                         <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                            <?php 
-                                $dsql = "DELETE FROM queue_Staff where TIME_TO_SEC(TIMEDIFF(CURRENT_TIMESTAMP,queue_Staff.session))>'$TIMEOUT'";
-                                mysqli_query($link,$dsql);
-                            ?>
+
                             <tr>
-                                <td class=column1>  <?php echo $row['Queue_Num'];        ?></td>
-                                <td>                <?php echo $row['First_Name'];      ?></td>
-                                <td>                <?php echo $row['Last_Name'];       ?></td>
-                                <td>
+                                <td class="column1n">  <?php echo $row['Queue_Num'];        ?></td>
+                                <td class="column2">                <?php echo $row['First_Name'];      ?></td>
+                                <td class="column2">                <?php echo $row['Last_Name'];       ?></td>
+                                <td class="column3">
                                 <a href= "ShowStaffQueue.php?delete=<?php echo $row['Staff_ID'];   ?>" class= btn btn-danger>Delete</a>
                                 </td>
                             </tr>  

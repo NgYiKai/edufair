@@ -17,6 +17,11 @@
     //Storing Data From Personal_Info into variable
     $Staff_First_Name = $r['First_Name'];
     $Staff_Last_Name  = $r['Last_Name'];
+    $Staff_Type = $r['Type'];
+
+    if($Staff_Type == "Admin") {
+        header('Location:../Admin_Interface/Admin.php');
+      }
 
     $NA ="Not Assign";
 
