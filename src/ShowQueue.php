@@ -62,7 +62,7 @@
     } else{
     echo "ERROR: Could not able to execute $sqls. " . mysqli_error($link);
     }
-    header('Location: AdminQueue.php');
+    header('Location: ../public/admin/AdminQueue.php');
     exit;
     }
 ?>

@@ -16,7 +16,7 @@
     <div class = 'write'> 
         <h2>Register now for us to know you more !</h2>
         <br>
-        <form method = "POST" action = "../Database_Insert_Script/Insert_Form.php"> <!action="/action_page.php" where action is the destination where form is send to >
+        <form method = "POST" action = "../src/Insert_Form.php"> <!action="/action_page.php" where action is the destination where form is send to >
 
             <! convert into POST method>
 

@@ -26,7 +26,7 @@
       var StudentID = <?php echo $_SESSION['Student_ID']?>;
       var QueueNum=1;
       function DisplayQueueNumber() {
-        $.post('ShowQueueNumber.php',{postStudID:StudentID},
+        $.post('../src/ShowQueueNumber.php',{postStudID:StudentID},
         function(data){
           console.log();
           if(isNaN(parseInt(data))){
@@ -38,7 +38,7 @@
         });
       }
       function UpdateTimeStamp() {
-        $("#div_refresh").load("UpdateTimeStamp.php");
+        $("#div_refresh").load("../src/UpdateTimeStamp.php");
 
       } 
 
@@ -50,7 +50,7 @@
       var assignStaffID = "NULL";
 
       function RetrieveStaffInfo() {
-        $.post('GetAssignStaff.php',{postStudID:StudentID},
+        $.post('../src/GetAssignStaff.php',{postStudID:StudentID},
         function(data){
             if(data!="Fail") {
                 var array = data.split(' ; ');

@@ -1,16 +1,22 @@
 <?php
   session_start();
   include('../config/database_connect.php');
-  $StudentID=$_SESSION['Student_ID'];
-  //Retreive Data Base on the Student_ID
-  $Query="SELECT * FROM student_personal_info WHERE Student_ID=$StudentID";
-  $query = $link->prepare($Query); // prepate a query
-  $query->execute(); // actually perform the query
-  $result = $query->get_result(); // retrieve the result so it can be used inside PHP
-  $r = $result->fetch_array(MYSQLI_ASSOC); // bind the data from the first result row to $r
-  //Storing Data From Personal_Info into variable
-  $First_Name = $r['First_Name'];
-  $Last_Name  = $r['Last_Name'];
+
+  if(isset($_SESSION['Student_ID'])){
+    $StudentID=$_SESSION['Student_ID'];
+    //Retreive Data Base on the Student_ID
+    $Query="SELECT * FROM student_personal_info WHERE Student_ID=$StudentID";
+    $query = $link->prepare($Query); // prepate a query
+    $query->execute(); // actually perform the query
+    $result = $query->get_result(); // retrieve the result so it can be used inside PHP
+    $r = $result->fetch_array(MYSQLI_ASSOC); // bind the data from the first result row to $r
+    //Storing Data From Personal_Info into variable
+    $First_Name = $r['First_Name'];
+    $Last_Name  = $r['Last_Name'];
+  }else{
+    header('Location:Register_page.php ');
+  }
+
 ?>
 
 
@@ -118,7 +124,7 @@ info and buttons
                         Chat with us 
                     </button>
                     
-                    <a href="../Database_Insert_Script/Insert_Queue.php">
+                    <a href="../src/Insert_Queue.php">
                     <button type="button" class = "newbutton">
                         See a counsellor
                     </button> 

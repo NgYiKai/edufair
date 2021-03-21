@@ -2,7 +2,7 @@
        
 if(isset($_POST["export"]))  
 {  
-     include('config/database_connect.php');
+     include('../config/database_connect.php');
 
      header('Content-Type: text/csv; charset=utf-8');  
      header('Content-Disposition: attachment; filename=data.csv');  

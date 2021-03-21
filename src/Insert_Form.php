@@ -58,7 +58,7 @@
     }
 
     echo $ErrorCount." Error Found.";
-    if($ErrorCount == 0)    { header('Location:../Interface/menu_page.php'); }
+    if($ErrorCount == 0)    { header('Location:../public/menu_page.php'); }
     exit;
 
 ?>

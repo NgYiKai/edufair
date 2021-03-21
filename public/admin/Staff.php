@@ -1,6 +1,6 @@
 <?php
     
-    include('../config/database_connect.php'); 
+    include('../../config/database_connect.php'); 
     session_start();
 
     if($_SESSION['Staff_ID'] != NULL) {
@@ -20,7 +20,7 @@
     $Staff_Type = $r['Type'];
 
     if($Staff_Type == "Admin") {
-        header('Location:../Admin_Interface/Admin.php');
+        header('Location:../admin/Admin.php');
       }
 
     $NA ="Not Assign";
@@ -37,7 +37,7 @@
 
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" type="text/css" href="../design/StaffStyle.css">
+<link rel="stylesheet" type="text/css" href="../../design/StaffStyle.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
     var StaffID = <?php echo $_SESSION['Staff_ID']?>;
@@ -65,7 +65,7 @@
         } else { 
             btn.className = "button-Queuing";
             GetNext = 1;
-            $("#InsertDIV").load('../Database_Insert_Script/Insert_Queue_Staff.php');
+            $("#InsertDIV").load('../src/Insert_Queue_Staff.php');
             button_Clear();
         }
     }
@@ -99,11 +99,11 @@
     }
 
     function clearAssign() {
-        $("#div_clearAssign").load("clearAssign.php");
+        $("#div_clearAssign").load("../../src/clearAssign.php");
     }
 
     function RetrieveStudInfo() {
-        $.post('GetAssignStud.php',{postStaffID:StaffID},
+        $.post('../../src/GetAssignStud.php',{postStaffID:StaffID},
         function(data){
             if(data!="Fail") {
                 var array = data.split(' ; ');
@@ -137,11 +137,11 @@
     }
 
     function UpdateTimeStamp() {
-        $("#div_refresh").load("UpdateStaffTimeStamp.php");
+        $("#div_refresh").load("../../src/UpdateStaffTimeStamp.php");
     }
 
     function DisplayQueueNumber() {
-        $.post('ShowStaffQueueNumber.php',{postStaffID:StaffID},
+        $.post('../../src/ShowStaffQueueNumber.php',{postStaffID:StaffID},
         function(data){
             var num = parseInt(data) || 0;
             if(num==0){
@@ -162,7 +162,7 @@
     function RemoveRemark() {
         console.log("Remove Remark");
         document.getElementById("RemarkBox").value = "";
-        $.post('UpdateStudentRemark.php',{postStudID:assignStudID,postType:"Remove"},
+        $.post('../../src/UpdateStudentRemark.php',{postStudID:assignStudID,postType:"Remove"},
             function(data){
                 console.log(data);
             });
@@ -172,7 +172,7 @@
         var Remark = document.getElementById("RemarkBox").value;
         if(Remark!=""){
             console.log(Remark);
-            $.post('UpdateStudentRemark.php',{postStudID:assignStudID,postType:"Update",postRemark:Remark},
+            $.post('../../src/UpdateStudentRemark.php',{postStudID:assignStudID,postType:"Update",postRemark:Remark},
                 function(data){
                     console.log(data);
                 });
@@ -185,7 +185,7 @@
     function DisplayRemarkText() {
         console.log("Displaying Remark");
         if(assignStudID != NA) {
-            $.post('UpdateStudentRemark.php',{postStudID:assignStudID,postType:"Display"},
+            $.post('../../src/UpdateStudentRemark.php',{postStudID:assignStudID,postType:"Display"},
             function(data){
                 if(document.getElementById("RemarkBox").value != "") {
                     RemarkLock="TRUE";
@@ -211,7 +211,7 @@
                 UpdateTimeStamp();
                 btn.childNodes[0].textContent =  "Queuing" + QN;
                 if(QN == "...") {
-                    $("#InsertDIV").load('../Database_Insert_Script/Insert_Queue_Staff.php');
+                    $("#InsertDIV").load('../../src/Insert_Queue_Staff.php');
                 }
             }
             if(GetNext == 1 && assignStudID != NA) {

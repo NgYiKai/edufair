@@ -1,6 +1,6 @@
 <?php
 
-include('config/database_connect.php');
+include('../config/database_connect.php');
 
 //delete all rows when delete button is clicked
 if(isset($_POST['delete'])){
@@ -9,6 +9,6 @@ if(isset($_POST['delete'])){
     $result = mysqli_query($connect,$query);
 
     //return to index.php page
-    header("Location: export(index).php");
+    header("Location: ../public/admin/export.php");
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 //conect to database
-include('config/database_connect.php');
+include('../config/database_connect.php');
 
 //get user msg through ajax
 $getMesg = mysqli_real_escape_string($link, $_POST['text']);

@@ -1,6 +1,6 @@
 <?php  
 //Connect to database
-include('config/database_connect.php');
+include('../../config/database_connect.php');
 
 //Sql query to join tables to be displayed
 $query = "SELECT student_personal_info.Student_ID, student_personal_info.First_Name, student_personal_info.Last_Name, student_contact_info.Phone_Number, student_contact_info.Email, student_additional_info.PreviousSchool, student_additional_info.HighestQualification, student_additional_info.MarketingPreference, student_additional_info.Privacy, student_remark.Remark
@@ -33,11 +33,11 @@ $result = mysqli_query($link, $query);
                <br />  
 
                <!-- Create export and delete button -->
-               <form method="post" action="export.php" align="center">  
+               <form method="post" action="../../src/exportData.php" align="center">  
                     <input type="submit" name="export" value="CSV Export" class="btn btn-success" />  
                </form>  
                <br>
-               <form method="post" action="delete.php" align="center">
+               <form method="post" action="../../src/deleteData.php" align="center">
                     <input type="submit" name="delete" value="Delete" class="btn btn-success" />
                </form>
                <br />  
