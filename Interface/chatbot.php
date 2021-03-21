@@ -32,6 +32,16 @@
         </div>
 
         <script>
+            
+            //Keyboard "Enter" button same fucntion as GUI "Send" button
+            var input = document.getElementById("data");
+            input.addEventListener("keyup", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    document.getElementById("send_btn").click();
+                }
+            });
+
             $(document).ready(function(){   //make function available after document is loaded
                 $("#send_btn").on("click", function(){  //attach click event to the send_btn
                     $value = $("#data").val(); //get value from data
