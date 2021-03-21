@@ -14,23 +14,31 @@
             echo "record deleted";
         } 
     }
-    //AutoIncrement for queue number
-    $query          =   $link->prepare("SELECT Queue_Num FROM queue ORDER BY Queue_Num DESC LIMIT 1"); // prepate a query
-    $query          ->  execute(); // actually perform the query
-    $result         =   $query->get_result(); // retrieve the result so it can be used inside PHP
-    $r              =   $result->fetch_array(MYSQLI_ASSOC); // bind the data from the first result row to $r
-    $CurrentCount   =   $r['Queue_Num'];
 
-    if( !is_null( $CurrentCount ) )   { $POSTCount=$CurrentCount+1; }
-            
-    $sql1 = "INSERT INTO `queue` (`Student_ID`,`Queue_Num`) VALUES ('$Student_ID','$POSTCount')";
-    //Error checking and submiting query
     $ErrorCount = 0; //Variable to stop or continue webpage redirect
-    if( mysqli_query( $link, $sql1 ) )  { echo "Records added successfully to queue.<br/>" ; }
-    else
-    {   ++$ErrorCount;
-        echo "ERROR: Could not able to execute $sql1. <br/>" . mysqli_error($link); }
-    echo "Client View";
-    if($ErrorCount == 0)    { header('Location:../Interface/ClientQueue.php'); }
+
+    $check ="SELECT * FROM staff WHERE Serving = $Student_ID";
+    $flag=mysqli_query($link, $check);
+    if(mysqli_num_rows( $flag )>0) {
+    } else {
+        //AutoIncrement for queue number
+        $query          =   $link->prepare("SELECT Queue_Num FROM queue ORDER BY Queue_Num DESC LIMIT 1"); // prepate a query
+        $query          ->  execute(); // actually perform the query
+        $result         =   $query->get_result(); // retrieve the result so it can be used inside PHP
+        $r              =   $result->fetch_array(MYSQLI_ASSOC); // bind the data from the first result row to $r
+        $CurrentCount   =   $r['Queue_Num'];
+
+        if( !is_null( $CurrentCount ) )   { $POSTCount=$CurrentCount+1; }
+                
+        $sql1 = "INSERT INTO `queue` (`Student_ID`,`Queue_Num`) VALUES ('$Student_ID','$POSTCount')";
+        //Error checking and submiting query
+    
+        if( mysqli_query( $link, $sql1 ) )  { echo "Records added successfully to queue.<br/>" ; }
+        else
+        {   ++$ErrorCount;
+            echo "ERROR: Could not able to execute $sql1. <br/>" . mysqli_error($link); }
+        echo "Client View";
+    }
+    if($ErrorCount == 0)    { header('Location:../Interface/StudentQueue.php'); }
     exit;
 ?>

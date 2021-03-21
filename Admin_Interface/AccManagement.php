@@ -1,7 +1,6 @@
 <?php
   session_start();
   include('../config/database_connect.php');
-
   if($_SESSION['Staff_ID'] != NULL) {
     $StaffID=$_SESSION['Staff_ID'];
   } else {
@@ -29,6 +28,7 @@
 <link rel="stylesheet" type="text/css" href="../design/AdminStyle.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
+    
     var flag;
     function Auto_Button() {
         if (flag == 0) {
@@ -46,30 +46,27 @@
     }
 
     $(document).ready(function(){
-        var check = sessionStorage.getItem("AutoAssign");
-        if (check == "Enabled") {
-            flag = 1;
-            document.getElementById("Auto_Status").innerHTML = "Disable";
-            document.getElementById("EAutoB").className = "DotG";
-        } else {
-            flag = 0;
-            document.getElementById("Auto_Status").innerHTML = "Enable";
-            document.getElementById("EAutoB").className = "DotR";
-        }
-        $("#div_refresh_Student").load("ShowQueue.php");
-        $("#div_refresh_Staff").load("ShowStaffQueue.php");
+    var check = sessionStorage.getItem("AutoAssign");
+    if (check == "Enabled") {
+        flag = 1;
+        document.getElementById("Auto_Status").innerHTML = "Disable";
+        document.getElementById("EAutoB").className = "DotG";
+    } else {
+        flag = 0;
+        document.getElementById("Auto_Status").innerHTML = "Enable";
+        document.getElementById("EAutoB").className = "DotR";
+    }
+    console.log(flag);
         setInterval(function() {
             if(flag == 1) {
                 $("#div_refresh_Assign").load("AssignStudToStaff.php");
             }
-            $("#div_refresh_Student").load("ShowQueue.php");
-            $("#div_refresh_Staff").load("ShowStaffQueue.php");
         }, 1000);
     });
 
 </script>
 <body>
-
+    <span id="div_refresh_Assign" style="display: none;"></span>
     <br>
     <button class="Staff-Name" style="float: left"><?php echo "$Staff_Last_Name $Staff_First_Name"?></button>
     <button class="LogOut" style="float: left" onclick = "window.location.href='../Interface/Staff-SignIn.php'">Log Out</button>
@@ -78,21 +75,20 @@
     </button> -->
 
     <br><br><br>
+
     <ul>
         <li><a href="Admin.php">Home</a></li>
-        <li><a href="AccManagement.php">Account Management</a></li>
-        <li><a class="active" href="AdminQueue.php">Queue</a></li>
+        <li><a class="active" href="AccManagement.php">Account Management</a></li>
+        <li><a href="AdminQueue.php">Queue</a></li>
         <li><a href="#about">Database Management</a></li>
         <li style="float:right"><button class="activeButton" onClick = "Auto_Button()">
             <span id = "EAutoB" class = "DotR">&#x25cf</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="Auto_Status">Enable</span> Counselor System
         </button></li>
     </ul>
 
+    <br><br><br><br><br>
+</div>
 
-    <br><br>
-    <div id="div_refresh_Student"></div>
-    <span id="div_refresh_Staff"></span>
-    <span id="div_refresh_Assign" style="display: none;"></span>
 
 </body>
 </html>
