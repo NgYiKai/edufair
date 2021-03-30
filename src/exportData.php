@@ -17,7 +17,7 @@ if(isset($_POST["export"]))
                ON student_personal_info.Student_ID = student_contact_info.Student_ID
                INNER JOIN student_additional_info
                ON student_personal_info.Student_ID = student_additional_info.Student_ID
-               INNER JOIN student_remark
+               LEFT JOIN student_remark
                ON student_personal_info.Student_ID = student_remark.Student_ID";  
 
      $result = mysqli_query($link, $query);  
