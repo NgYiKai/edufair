@@ -4,12 +4,44 @@
     $CurrentTime=date("Y-m-d H:i:s");
     $TIMEOUT=1; //Time to auto delete a request from queue
 ?>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<script>
+    var flag;
+
+    var date_format ='DD-MM-YY h:mm:ss A';
+
+    function log( errorType, errorMessage) {
+        var initial_append_log = " [Undefined] : ";
+        var now = new moment();
+        var log = document.getElementById("Log");
+        
+        if(errorType == 1) {
+            initial_append_log = " [Notice] : ";
+        }
+        if(errorType == 2) {
+            initial_append_log = " [Prevention] : ";
+        }
+        if(errorType == 3) {
+            initial_append_log = " [Error] : ";
+        }
+        if(errorType == 4) {
+            initial_append_log = " [Action] : ";
+        }
+
+        log_Message = log_Message + "\r\n" + now.format(date_format) + initial_append_log + errorMessage;
+        sessionStorage.setItem("Log", log_Message);
+    }
+    function log_SF_delete() {
+        log(4,"Attempting to Delete A Staff From Queue!");
+    }
+</script>
 <!DOCTYPE html>
 <html>
 <div class="container-table100">
     <div class="wrap-table100cit">
         <div class="table100">
-        <h6 style="font-size:30px;color:white;font-family:verdana"><b><center>Student Queue</center></b></h6>
+        <h6 style="font-size:30px;color:white;font-family:verdana"><b><center>Staff Queue</center></b></h6>
         <br>
             <table>
                 <thead>
@@ -22,7 +54,7 @@
                 </thead>
                 <tbody>
                     <?php
-                        $sql= "SELECT queue.Student_ID, student_personal_info.First_Name, student_personal_info.Last_Name, queue.session,queue.Queue_Num FROM student_personal_info INNER JOIN queue on queue.Student_ID=student_personal_info.Student_ID";
+                        $sql= "SELECT queue_Staff.Staff_ID, staff.First_Name, staff.Last_Name, queue_Staff.session,queue_Staff.Queue_Num FROM staff INNER JOIN queue_Staff on queue_Staff.Staff_ID=staff.Staff_ID";
                         $result = mysqli_query($link, $sql);
                         $resultCheck = mysqli_num_rows($result);?>
 
@@ -33,7 +65,7 @@
                                 <td class="column2">                <?php echo $row['First_Name'];      ?></td>
                                 <td class="column2">                <?php echo $row['Last_Name'];       ?></td>
                                 <td class="column3">
-                                <a href= "ShowQueue.php?delete=<?php echo $row['Student_ID'];   ?>" class= btn btn-danger>Delete</a>
+                                <a onClick = "log_SF_delete()" href= "../../src/ShowStaffQueue.php?delete=<?php echo $row['Staff_ID'];   ?>" class= btn btn-danger>Delete</a>
                                 </td>
                             </tr>  
                         <?php endwhile; ?>
@@ -51,10 +83,10 @@
     if($links === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
     }
-    $Student_IDs=  $_GET['delete'];
+    $Staff_IDs=  $_GET['delete'];
 
     // Attempt insert query execution
-    $sqls = "DELETE FROM queue WHERE Student_ID='$Student_IDs'";
+    $sqls = "DELETE FROM queue_staff WHERE Staff_ID='$Staff_IDs'";
 
 
     if(mysqli_query($links, $sqls)){
@@ -62,7 +94,7 @@
     } else{
     echo "ERROR: Could not able to execute $sqls. " . mysqli_error($link);
     }
-    header('Location: AdminQueue.php');
+    header('Location: ../public/admin/AdminQueue.php');
     exit;
     }
 ?>

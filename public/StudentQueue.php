@@ -1,7 +1,13 @@
 <?php
   session_start();
   include('../config/database_connect.php');  
-  $StudentID=$_SESSION['Student_ID'];
+  error_reporting(E_ALL ^ E_WARNING); 
+  if(isset($_SESSION['Student_ID'])){
+    $StudentID=$_SESSION['Student_ID'];
+  } else {
+    header('Location:Register_page.php');
+  }
+
   //Retreive Data Base on the Student_ID
   $Query="SELECT * FROM student_personal_info WHERE Student_ID=$StudentID";
   $query = $link->prepare($Query); // prepate a query
@@ -26,7 +32,7 @@
       var StudentID = <?php echo $_SESSION['Student_ID']?>;
       var QueueNum=1;
       function DisplayQueueNumber() {
-        $.post('ShowQueueNumber.php',{postStudID:StudentID},
+        $.post('../src/ShowQueueNumber.php',{postStudID:StudentID},
         function(data){
           console.log();
           if(isNaN(parseInt(data))){
@@ -38,7 +44,7 @@
         });
       }
       function UpdateTimeStamp() {
-        $("#div_refresh").load("UpdateTimeStamp.php");
+        $("#div_refresh").load("../src/UpdateTimeStamp.php");
 
       } 
 
@@ -50,7 +56,7 @@
       var assignStaffID = "NULL";
 
       function RetrieveStaffInfo() {
-        $.post('GetAssignStaff.php',{postStudID:StudentID},
+        $.post('../src/GetAssignStaff.php',{postStudID:StudentID},
         function(data){
             if(data!="Fail") {
                 var array = data.split(' ; ');

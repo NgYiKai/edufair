@@ -39,6 +39,6 @@
             echo "ERROR: Could not able to execute $sql1. <br/>" . mysqli_error($link); }
         echo "Client View";
     }
-    if($ErrorCount == 0)    { header('Location:../Interface/StudentQueue.php'); }
+    if($ErrorCount == 0)    { header('Location:../public/StudentQueue.php'); }
     exit;
 ?>

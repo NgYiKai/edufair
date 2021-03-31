@@ -1,7 +1,6 @@
 <?php
     include('../config/database_connect.php');
     $StaffID=$_POST['postStaffID'];
-    
 
     $Query= "SELECT student_personal_info.First_Name, 
                     student_personal_info.Last_Name,
@@ -25,7 +24,11 @@
         $Market_Pref = $r['MarketingPreference'];
         $Assign_Stud = $r['Student_ID'];
         $data =" $First_Name ; $Last_Name ; $Highest_Qual ; $Prev_School ; $Market_Pref ; $Assign_Stud";
-    } else { $data = "Fail" ;}
+    } else { 
+        $check = mysqli_query($link, "SELECT Serving FROM staff WHERE Staff_ID = $StaffID AND Serving IS NOT NULL");
+
+        if ($check && mysqli_num_rows( $check )>0 ) { $data = "OddFail" ;} else {$data = "Fail"; }
+    }
 
     
     echo $data;

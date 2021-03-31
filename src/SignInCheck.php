@@ -16,11 +16,11 @@
     if($r>0) {
         session_start();
         $_SESSION['Staff_ID'] = $StaffID;
-        if($Type == "Admin") { header('Location:../Admin_Interface/Admin.php'); } 
-        if($Type == "Counselor") { header('Location:Staff.php'); }
+        if($Type == "Admin") { header('Location:../public/admin/Admin.php'); } 
+        if($Type == "Counselor") { header('Location:../public/admin/Staff.php'); }
         
     } else {
-        header('Location:Staff-SignIn.php');
+        header('Location:../public/admin/Staff-SignIn.php');
     }
     
 ?>

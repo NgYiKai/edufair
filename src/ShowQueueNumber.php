@@ -9,7 +9,7 @@
     //Storing Data From Personal_Info into variable
     $QueueNum=$r['Queue_Num'];
     if($QueueNum==null) {
-        include('../Database_Insert_Script/Insert_Queue.php');
+        include('Insert_Queue.php');
     }
     echo $QueueNum;
 ?>

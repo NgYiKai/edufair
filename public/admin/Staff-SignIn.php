@@ -2,14 +2,15 @@
     session_start();
     // $_SESSION = array();
     $_SESSION['Staff_ID']=NULL;
-    include('../config/database_connect.php');
+    include('../../config/database_connect.php');
 ?>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" type="text/css" href="../design/StaffStyle.css">
+<link rel="stylesheet" type="text/css" href="../../design/StaffStyle.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
     sessionStorage.setItem("AutoAssign", "Disabled");
+    sessionStorage.setItem("Log", "");
 </script>
 <body>
     <div class="container-Staff">
@@ -17,7 +18,7 @@
             <div class="Signin-Header">
                 <label class="Signin-Title">Staff Login</label>
             </div>
-            <form class="form-Signin" action="SignInCheck.php" method="post">
+            <form class="form-Signin" action="../../src/SignInCheck.php" method="post">
 
                 <div class="container-Signin">
                     <label for="uname"><b>Username</b></label>
