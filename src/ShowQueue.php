@@ -4,6 +4,38 @@
     $CurrentTime=date("Y-m-d H:i:s");
     $TIMEOUT=1; //Time to auto delete a request from queue
 ?>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<script>
+    var flag;
+
+    var date_format ='DD-MM-YY h:mm:ss A';
+
+    function log( errorType, errorMessage) {
+        var initial_append_log = " [Undefined] : ";
+        var now = new moment();
+        var log = document.getElementById("Log");
+        
+        if(errorType == 1) {
+            initial_append_log = " [Notice] : ";
+        }
+        if(errorType == 2) {
+            initial_append_log = " [Prevention] : ";
+        }
+        if(errorType == 3) {
+            initial_append_log = " [Error] : ";
+        }
+        if(errorType == 4) {
+            initial_append_log = " [Action] : ";
+        }
+
+        log_Message = log_Message + "\r\n" + now.format(date_format) + initial_append_log + errorMessage;
+        sessionStorage.setItem("Log", log_Message);
+    }
+    function log_SD_delete() {
+        log(4,"Attempting to Delete A Student From Queue!");
+    }
+</script>
 <!DOCTYPE html>
 <html>
 <div class="container-table100">
@@ -33,7 +65,8 @@
                                 <td class="column2">                <?php echo $row['First_Name'];      ?></td>
                                 <td class="column2">                <?php echo $row['Last_Name'];       ?></td>
                                 <td class="column3">
-                                <a href= "ShowQueue.php?delete=<?php echo $row['Student_ID'];   ?>" class= btn btn-danger>Delete</a>
+                                <a onClick = "log_SD_delete()" href= "../../src/ShowQueue.php?delete=<?php echo $row['Student_ID'];   ?>" class= btn btn-danger>Delete</a>
+
                                 </td>
                             </tr>  
                         <?php endwhile; ?>

@@ -105,33 +105,37 @@
     function RetrieveStudInfo() {
         $.post('../../src/GetAssignStud.php',{postStaffID:StaffID},
         function(data){
-            if(data!="Fail") {
-                var array = data.split(' ; ');
-                Stu_FN = array[0];
-                Stu_LN = array[1];
-                Stu_HQ = array[2];
-                Stu_PS = array[3];
-                Stu_MP = array[4];
-                assignStudID = array[5]; 
-                document.getElementById('RemarkBox').readOnly = false;
-                document.getElementById("button_Update").disabled = false;
-                document.getElementById("button_Refresh").disabled = false;
-                document.getElementById("button_Remove").disabled = false;
-
+            if(data=="OddFail") {
+                clearAssign();
             } else {
-                Stu_FN=NA;
-                Stu_LN=NA;
-                Stu_HQ=NA;
-                Stu_PS=NA;
-                Stu_MP=NA;
-                assignStudID = NA; 
-                RemarkLock="FALSE";
-                document.getElementById("RemarkBox").value = "";
-                document.getElementById('RemarkBox').readOnly = true;
-                document.getElementById("button_Update").disabled = true;
-                document.getElementById("button_Refresh").disabled = true;
-                document.getElementById("button_Remove").disabled = true;
+                if(data!="Fail" && data!="OddFail" ) {
+                    var array = data.split(' ; ');
+                    Stu_FN = array[0];
+                    Stu_LN = array[1];
+                    Stu_HQ = array[2];
+                    Stu_PS = array[3];
+                    Stu_MP = array[4];
+                    assignStudID = array[5]; 
+                    document.getElementById('RemarkBox').readOnly = false;
+                    document.getElementById("button_Update").disabled = false;
+                    document.getElementById("button_Refresh").disabled = false;
+                    document.getElementById("button_Remove").disabled = false;
 
+                } else {
+                    Stu_FN=NA;
+                    Stu_LN=NA;
+                    Stu_HQ=NA;
+                    Stu_PS=NA;
+                    Stu_MP=NA;
+                    assignStudID = NA; 
+                    RemarkLock="FALSE";
+                    document.getElementById("RemarkBox").value = "";
+                    document.getElementById('RemarkBox').readOnly = true;
+                    document.getElementById("button_Update").disabled = true;
+                    document.getElementById("button_Refresh").disabled = true;
+                    document.getElementById("button_Remove").disabled = true;
+
+                }
             }
         });
     }

@@ -23,7 +23,8 @@
 		$update = true;
 		$record = mysqli_query($db, "SELECT * FROM $table WHERE no=$no");
 
-		if (@count($record) == 1 ) {
+
+		if ($record && mysqli_num_rows( $record )==1) {
 			$n = mysqli_fetch_array($record);
 			$question = $n['question'];
 			$answer = $n['answer'];
@@ -56,7 +57,10 @@
 		$table=$_GET['table'];
 		mysqli_query($db, "DELETE FROM $table WHERE no=$no");
 		$_SESSION['message'] = "Data deleted!"; 
-		header('location: ../public/admin/databaseManage.php');
+		header('location: ../admin/databaseManage.php');
 	}
 
+
 ?>
+
+

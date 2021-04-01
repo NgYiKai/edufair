@@ -1,6 +1,8 @@
 <?php
   session_start();
   include('../config/database_connect.php');
+  error_reporting(E_ALL ^ E_WARNING); 
+  
 
   if(isset($_SESSION['Student_ID'])){
     $StudentID=$_SESSION['Student_ID'];

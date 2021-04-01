@@ -1,7 +1,15 @@
 <?php
   session_start();
   include('../config/database_connect.php');  
-  $StudentID=$_SESSION['Student_ID'];
+
+  error_reporting(E_ALL ^ E_WARNING); 
+  if(isset($_SESSION['Student_ID'])){
+    $StudentID=$_SESSION['Student_ID'];
+  } else {
+    header('Location:Register_page.php');
+  }
+
+
   //Retreive Data Base on the Student_ID
   $Query="SELECT * FROM student_personal_info WHERE Student_ID=$StudentID";
   $query = $link->prepare($Query); // prepate a query

@@ -10,6 +10,8 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
     sessionStorage.setItem("AutoAssign", "Disabled");
+    sessionStorage.setItem("Log", "");
+
 </script>
 <body>
     <div class="container-Staff">

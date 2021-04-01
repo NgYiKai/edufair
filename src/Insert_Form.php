@@ -14,6 +14,12 @@
     $HighestQualification   = $_POST['HighestQualification'];
     $PreviousSchool         = $_POST['PreviousSchool'];
     $notify                 = $_POST['notify'];
+    if($_POST['protect'] == 'true' ) {
+        $protect = 1;
+    } else {
+        $protect = 0;
+    }
+
 
 
     //Auto increment for student ID
@@ -30,7 +36,8 @@
 
     // Query Initialisation
     $sql1 = "INSERT INTO `student_personal_info` (`Student_ID`,`First_Name`,`Last_Name`) VALUES ('$POSTCount', '$First_Name','$Last_Name')";
-    $sql2 = "INSERT INTO `student_additional_info` (`Student_ID`,`PreviousSchool`,`HighestQualification`, `MarketingPreference`) VALUES ('$POSTCount','$PreviousSchool','$HighestQualification','$notify')"; 
+    $sql2 = "INSERT INTO `student_additional_info` (`Student_ID`,`PreviousSchool`,`HighestQualification`, `MarketingPreference`,`Privacy`) VALUES ('$POSTCount','$PreviousSchool','$HighestQualification','$notify','$protect')"; 
+
     $sql3 = "INSERT INTO `student_contact_info` (`Student_ID`,`Phone_Number`,`Email`) VALUES ('$POSTCount','$Phone_Number','$Email')";
 
     //Error checking and submiting query
