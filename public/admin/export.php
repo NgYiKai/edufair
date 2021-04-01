@@ -1,3 +1,4 @@
+
 <?php
   session_start();
   include('../../config/database_connect.php');
@@ -148,6 +149,7 @@
     <title>Export student's personal information</title>  
     
     <br /><br />  
+
           <div class="container" style="width:1500px;">  
                <h2 align="center">Export Student Data to Excel</h2> 
                <br>
@@ -162,6 +164,7 @@
                <br>
                <form method="post" action="../../src/deleteData.php" align="center">
                     <input type="submit" onClick = "log_delete()" name="delete" value="Delete" class="btn btn-success" />
+
                </form>
                <br />  
 
@@ -182,6 +185,7 @@
                          </tr>  
                     <?php  
                     while($row = mysqli_fetch_array($result1))  
+
                     {  
                     ?>  
                          <tr>  
@@ -202,9 +206,9 @@
                     </table>  
                </div>  
           </div>  
-
 </body>
 </html>
+
 
 
 

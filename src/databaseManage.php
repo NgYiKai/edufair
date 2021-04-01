@@ -23,6 +23,7 @@
 		$update = true;
 		$record = mysqli_query($db, "SELECT * FROM $table WHERE no=$no");
 
+
 		if ($record && mysqli_num_rows( $record )==1) {
 			$n = mysqli_fetch_array($record);
 			$question = $n['question'];
@@ -61,4 +62,5 @@
 
 
 ?>
+
 

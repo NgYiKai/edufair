@@ -6,7 +6,6 @@
 	} else {
 	  header('Location:Staff-SignIn.php');
 	}
-
 	$Query="SELECT * FROM staff WHERE Staff_ID=$StaffID";
 	$query = $link->prepare($Query); // prepate a query
 	$query->execute(); // actually perform the query
@@ -21,7 +20,6 @@
 	  header('Location:Staff.php');
 	}
 	include('../../src/accountManage.php'); 
-
 ?>
 
 <!DOCTYPE html>
@@ -87,8 +85,10 @@
             document.getElementById("Auto_Status").innerHTML = "Disable";
             sessionStorage.setItem("AutoAssign", "Enabled");
             flag = 1;
+
             log(1,"Counselor System Enabled!");
             
+
         } else {
             document.getElementById("EAutoB").className = "DotR";
             document.getElementById("Auto_Status").innerHTML = "Enable";
@@ -126,9 +126,11 @@
         setInterval(function() {
             if(flag == 1) {
                 $("#div_refresh_Assign").load("../../src/AssignStudToStaff.php");
+
             }
         }, 1000);
     });
+
 
     $(document).ready(function(){
         setInterval(function() {
@@ -138,6 +140,7 @@
             }
         }, 5000);
     });
+
 
 </script>
 <body>
@@ -157,19 +160,18 @@
         <li><a href="AdminQueue.php">Queue</a></li>
         <li><a href="databaseManage.php">Database Management</a></li>
         <li><a href="export.php">Database Export</a></li>
+
         <li style="float:right"><button class="activeButton" onClick = "Auto_Button()">
             <span id = "EAutoB" class = "DotR">&#x25cf</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="Auto_Status">Enable</span> Counselor System
         </button></li>
     </ul>
-
-    
-
 
     <?php 
         $aresults = mysqli_query($link, "SELECT * FROM staff WHERE Type = 'Admin' ORDER BY Staff_ID ASC");
         $cresults = mysqli_query($link, "SELECT * FROM staff WHERE Type = 'Counselor' ORDER BY Staff_ID ASC");
 
     ?>
+
 
 
 
@@ -289,6 +291,7 @@
 			</td>
 			<td>
 				<a onClick="log_C_delete()" href="accountManage.php?del=<?php echo $crow['Staff_ID']; ?>" class="del_btn">Delete</a>
+
 			</td>
 		</tr>
 	<?php } ?>

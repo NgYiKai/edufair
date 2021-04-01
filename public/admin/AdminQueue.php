@@ -28,6 +28,7 @@
 <html>
 <link rel="stylesheet" type="text/css" href="../../design/AdminStyle.css">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+
 <script src="https://momentjs.com/downloads/moment.js"></script>
 <script>
     var flag;
@@ -65,6 +66,7 @@
             flag = 1;
             log(1,"Counselor System Enabled!");
             
+
         } else {
             document.getElementById("EAutoB").className = "DotR";
             document.getElementById("Auto_Status").innerHTML = "Enable";
@@ -72,11 +74,13 @@
             flag = 0;
             log(1,"Counselor System Disabled!");
         }
+
     }
 
     $(document).ready(function(){
         var check = sessionStorage.getItem("AutoAssign");
         log_Message = sessionStorage.getItem("Log");
+
         if (check == "Enabled") {
             flag = 1;
             document.getElementById("Auto_Status").innerHTML = "Disable";
@@ -97,6 +101,7 @@
         }, 1000);
     });
 
+
     $(document).ready(function(){
         setInterval(function() {
             if(flag == 1) {
@@ -106,23 +111,28 @@
         }, 5000);
     });
 
+
 </script>
 <body>
 
     <br>
     <button class="Staff-Name" style="float: left"><?php echo "$Staff_Last_Name $Staff_First_Name"?></button>
+
     <button class="LogOut" style="float: left" onclick = "window.location.href='Staff-SignIn.php'">Log Out</button>
+
     <!-- <button class="LogOut" style="float: right" onClick = "Auto_Button()">
         <span id = "EAutoB" class = "DotR">&#x25cf</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="Auto_Status">Enable</span> Auto Assign
     </button> -->
 
     <br><br><br>
     <ul>
+
         <li><a href="Admin.php">Home</a></li>
         <li><a href="accountManage.php">Account Management</a></li>
         <li><a class="active" href="AdminQueue.php">Queue</a></li>
         <li><a href="databaseManage.php">Database Management</a></li>
         <li><a href="export.php">Database Export</a></li>
+
         <li style="float:right"><button class="activeButton" onClick = "Auto_Button()">
             <span id = "EAutoB" class = "DotR">&#x25cf</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="Auto_Status">Enable</span> Counselor System
         </button></li>

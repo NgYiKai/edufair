@@ -20,7 +20,9 @@
   if($Staff_Type == "Counselor") {
     header('Location:Staff.php');
   }
+
   $text = "HEHE";
+
 
 ?>
 
@@ -61,19 +63,23 @@
         sessionStorage.setItem("Log", log_Message);
     }
 
+
     function Auto_Button() {
         if (flag == 0) {
             document.getElementById("EAutoB").className = "DotG";
             document.getElementById("Auto_Status").innerHTML = "Disable";
             sessionStorage.setItem("AutoAssign", "Enabled");
             flag = 1;
+
             log(1,"Counselor System Enabled!");
             
+
         } else {
             document.getElementById("EAutoB").className = "DotR";
             document.getElementById("Auto_Status").innerHTML = "Enable";
             sessionStorage.setItem("AutoAssign", "Disabled");
             flag = 0;
+
             log(1,"Counselor System Disabled!");
         }
     }
@@ -165,7 +171,6 @@
         }, 5000);
     });
 
-
 </script>
 <body>
     <span id="div_refresh_Assign" style="display: none;"></span>
@@ -184,6 +189,7 @@
         <li><a href="AdminQueue.php">Queue</a></li>
         <li><a href="databaseManage.php">Database Management</a></li>
         <li><a href="export.php">Database Export</a></li>
+
         <li style="float:right"><button class="activeButton" onClick = "Auto_Button()">
             <span id = "EAutoB" class = "DotR">&#x25cf</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="Auto_Status">Enable</span> Counselor System
         </button></li>
@@ -205,6 +211,7 @@
     <button class="LogOut" onClick = "C_Log()"> Clear Log</button><br>
     <div class="remarkContainer">
         <textarea  class ="remarkBox" type="text"  id = "Log" disabled>Welcome <?php echo "$Staff_Last_Name $Staff_First_Name" ?> </textarea>
+
     </div>
 </body>
 </html>

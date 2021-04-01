@@ -66,6 +66,7 @@
                                 <td class="column2">                <?php echo $row['Last_Name'];       ?></td>
                                 <td class="column3">
                                 <a onClick = "log_SD_delete()" href= "../../src/ShowQueue.php?delete=<?php echo $row['Student_ID'];   ?>" class= btn btn-danger>Delete</a>
+
                                 </td>
                             </tr>  
                         <?php endwhile; ?>

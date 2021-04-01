@@ -9,6 +9,7 @@
 	$username = "";
 	$password = "";
 	$dname = "";
+
 	$no = 0;
 	$update = false;
 
@@ -25,6 +26,7 @@
 			$username = $n['Username'];
 			$password = $n['Password'];
 			$dname = $n['Display_Name'];
+
 		}
 	}
 
@@ -56,6 +58,7 @@
 			$_SESSION['message'] = "Data exists"; 
 			header('location: ../public/admin/accountManage.php');
 		}
+
 	}
 
     if (isset($_POST['update'])) {
@@ -77,6 +80,7 @@
 		mysqli_query($link, "DELETE FROM staff WHERE Staff_ID=$no");
 		$_SESSION['message'] = "Data deleted!"; 
 		header('location: ../admin/accountManage.php');
+
 	}
 
 ?>

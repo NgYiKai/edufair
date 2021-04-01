@@ -4,6 +4,7 @@
     $CurrentTime=date("Y-m-d H:i:s");
     $TIMEOUT=1; //Time to auto delete a request from queue
 ?>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="https://momentjs.com/downloads/moment.js"></script>
 <script>
@@ -36,6 +37,7 @@
         log(4,"Attempting to Delete A Staff From Queue!");
     }
 </script>
+
 <!DOCTYPE html>
 <html>
 <div class="container-table100">
@@ -66,6 +68,7 @@
                                 <td class="column2">                <?php echo $row['Last_Name'];       ?></td>
                                 <td class="column3">
                                 <a onClick = "log_SF_delete()" href= "../../src/ShowStaffQueue.php?delete=<?php echo $row['Staff_ID'];   ?>" class= btn btn-danger>Delete</a>
+
                                 </td>
                             </tr>  
                         <?php endwhile; ?>
@@ -95,6 +98,7 @@
     echo "ERROR: Could not able to execute $sqls. " . mysqli_error($link);
     }
     header('Location: ../public/admin/AdminQueue.php');
+
     exit;
     }
 ?>

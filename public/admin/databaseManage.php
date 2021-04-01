@@ -7,6 +7,7 @@
 	  header('Location:Staff-SignIn.php');
 	}
     error_reporting(E_ALL ^ E_WARNING); 
+
   
 	$Query="SELECT * FROM staff WHERE Staff_ID=$StaffID";
 	$query = $link->prepare($Query); // prepate a query
@@ -59,6 +60,7 @@
         sessionStorage.setItem("Log", log_Message);
     }
 
+
     function Auto_Button() {
         if (flag == 0) {
             document.getElementById("EAutoB").className = "DotG";
@@ -67,6 +69,7 @@
             flag = 1;
             log(1,"Counselor System Enabled!");
             
+
         } else {
             document.getElementById("EAutoB").className = "DotR";
             document.getElementById("Auto_Status").innerHTML = "Enable";
@@ -111,6 +114,7 @@
         }, 1000);
     });
 
+
     $(document).ready(function(){
         setInterval(function() {
             if(flag == 1) {
@@ -119,6 +123,7 @@
             }
         }, 5000);
     });
+
 
 </script>
 <body>
@@ -133,11 +138,13 @@
     <br><br><br>
 
     <ul>
+
         <li><a href="Admin.php">Home</a></li>
         <li><a href="accountManage.php">Account Management</a></li>
         <li><a href="AdminQueue.php">Queue</a></li>
         <li><a class="active" href="databaseManage.php">Database Management</a></li>
         <li><a href="export.php">Database Export</a></li>
+
         <li style="float:right"><button class="activeButton" onClick = "Auto_Button()">
             <span id = "EAutoB" class = "DotR">&#x25cf</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="Auto_Status">Enable</span> Counselor System
         </button></li>
@@ -157,6 +164,7 @@
 
 <form >
   <label >Choose a table:</label>
+
   <select name="tableSelected">
     <option <?php if($_SESSION['table'] == 'faq_facilities'){echo("selected");}?> value="faq_facilities">Facilities</option>
     <option <?php if($_SESSION['table'] == 'faq_fees'){echo("selected");}?> value="faq_fees">Fees</option>
@@ -164,6 +172,7 @@
 	<option <?php if($_SESSION['table'] == 'faq_duration_of_programme'){echo("selected");}?> value="faq_duration_of_programme">Duration of the programme</option>
 	<option <?php if($_SESSION['table'] == 'faq_general'){echo("selected");}?> value="faq_general">General</option>
 	<option <?php if($_SESSION['table'] == 'faq_intake'){echo("selected");}?> value="faq_intake">Intake</option>
+
   </select>
   <br><br>
   <input type="submit" name="tableSubmit">
@@ -188,6 +197,7 @@
 	        <button onClick = "log_update()" class="btn" type="submit" name="update" >update</button>
         <?php else: ?>
             <button onClick = "log_save()" class="btn" type="submit" name="save" >Save</button>
+
         <?php endif ?>
 		</div>
 </form>

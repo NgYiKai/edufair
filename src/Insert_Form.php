@@ -21,6 +21,7 @@
     }
 
 
+
     //Auto increment for student ID
     $POSTCount      =   1;
     $query          =   $link   ->  prepare( "SELECT Student_ID FROM student_personal_info ORDER BY Student_ID DESC LIMIT 1" ); // prepate a query
@@ -36,6 +37,7 @@
     // Query Initialisation
     $sql1 = "INSERT INTO `student_personal_info` (`Student_ID`,`First_Name`,`Last_Name`) VALUES ('$POSTCount', '$First_Name','$Last_Name')";
     $sql2 = "INSERT INTO `student_additional_info` (`Student_ID`,`PreviousSchool`,`HighestQualification`, `MarketingPreference`,`Privacy`) VALUES ('$POSTCount','$PreviousSchool','$HighestQualification','$notify','$protect')"; 
+
     $sql3 = "INSERT INTO `student_contact_info` (`Student_ID`,`Phone_Number`,`Email`) VALUES ('$POSTCount','$Phone_Number','$Email')";
 
     //Error checking and submiting query
