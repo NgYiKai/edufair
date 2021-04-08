@@ -12,7 +12,7 @@
 }
 
 .LogOut {
-  background :#4c5361;
+  background :#de1b5c;
   color: rgb(255, 255, 255);
   border-radius: 6px;
   padding: 9px;
@@ -48,7 +48,7 @@
 }
 
 .active {
-  background-color: #4CAF50;
+  background-color: #18194f;
 }
 
 .DotG {
@@ -182,7 +182,7 @@ background: #c850c0;
 background: -webkit-linear-gradient(45deg, #4158d0, #c850c0);
 background: -o-linear-gradient(45deg, #4158d0, #c850c0);
 background: -moz-linear-gradient(45deg, #4158d0, #c850c0);
-background: linear-gradient(45deg, #4158d0, #c850c0);
+background: linear-gradient(45deg, #009bbd, #007ca7);
 background-attachment: fixed;
 }
 
@@ -446,4 +446,8 @@ width: 150px;
 .columnright {
 width: 350px;
 text-align: left
+}
+
+.actionbuttons {
+  text-align: center;
 }
