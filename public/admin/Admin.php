@@ -197,7 +197,7 @@
 
     <br><br><br><br><br>
 
-    <div>
+    <div class="actionbuttons">
         <button class="LogOut"onClick = "R_Stud_Q()"> Reset Student Queue</button>
         <br><br><br>
         <button class="LogOut" onClick = "R_Staff_Q()"> Reset Staff Queue</button>
